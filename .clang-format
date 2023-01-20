@@ -1,0 +1,16 @@
+BasedOnStyle: LLVM
+IndentWidth: 4
+
+Language: Cpp
+AccessModifierOffset: -2
+AlignAfterOpenBracket: AlwaysBreak
+AlignArrayOfStructures: Right
+BreakStringLiterals: true
+ColumnLimit: 148
+CompactNamespaces: false
+Cpp11BracedListStyle: true
+FixNamespaceComments: false
+IndentAccessModifiers: false
+IndentCaseLabels: true
+IndentGotoLabels: true
+NamespaceIndentation: All
