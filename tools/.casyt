@@ -13,3 +13,9 @@ export "cpp" {
     declare "library"
     declare "executable"
 }
+
+cpp::executable("-casyt") {
+    sources = ["main.cpp"]
+    dependencies = ["//lib:casyt.driver"]
+    compile_flags = ["-pthread"]
+}

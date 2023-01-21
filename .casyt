@@ -6,3 +6,17 @@
  */
 
 import "//tools:cpp"
+
+toolchain "default" {
+    cpp.compile_flags = [
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+    ]
+}
+
+toolchain "release" {
+    cpp.compile_flags = [
+        "-Werror",
+    ]
+}
