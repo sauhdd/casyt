@@ -8,3 +8,9 @@
 cpp::library("casyt.driver", ::static) {
     sources = ["casyt/driver.cpp"]
 }
+
+cpp::library("casyt.lex", ::static) {
+    sources = [
+        "casyt/lex/lexer_position.cpp",
+    ]
+}
