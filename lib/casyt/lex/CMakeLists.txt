@@ -4,7 +4,8 @@
 #  Licensed under the MPL-2.0 license.
 
 add_library(casyt.lex STATIC
-    lexer_position.cpp)
+    lexer_position.cpp
+    lexer_token.cpp)
 
 target_include_directories(casyt.lex PUBLIC
     ${CASYT_INCLUDE_DIR})
