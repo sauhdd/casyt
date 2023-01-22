@@ -12,6 +12,7 @@ export "cpp" {
 
     declare "library"
     declare "executable"
+    declare "test"
 }
 
 cpp::executable("-casyt") {

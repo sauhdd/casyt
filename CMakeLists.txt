@@ -14,7 +14,13 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED true)
 set(CASYT_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
 
+find_package(GTest REQUIRED)
 find_package(Threads REQUIRED)
+
+include(GoogleTest)
+
+enable_testing()
 
 add_subdirectory(lib)
 add_subdirectory(tools)
+add_subdirectory(tests)
