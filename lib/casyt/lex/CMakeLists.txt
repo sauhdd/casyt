@@ -5,7 +5,8 @@
 
 add_library(casyt.lex STATIC
     lexer_position.cpp
-    lexer_token.cpp)
+    lexer_token.cpp
+    lexer.cpp)
 
 target_include_directories(casyt.lex PUBLIC
     ${CASYT_INCLUDE_DIR})
