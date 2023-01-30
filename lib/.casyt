@@ -15,3 +15,13 @@ cpp::library("casyt.lex", ::static) {
         "casyt/lex/lexer_token.cpp",
     ]
 }
+
+cpp::executable("casyt.lex-driver") {
+    sources = [
+        "casyt/lex/lexer.driver.cpp",
+    ]
+
+    dependencies = [
+        ":casyt.lex",
+    ]
+}

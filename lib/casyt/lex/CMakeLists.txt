@@ -10,3 +10,12 @@ add_library(casyt.lex STATIC
 
 target_include_directories(casyt.lex PUBLIC
     ${CASYT_INCLUDE_DIR})
+
+add_executable(casyt.lex-driver
+    lexer.driver.cpp)
+
+target_include_directories(casyt.lex-driver PUBLIC
+    ${CASYT_INCLUDE_DIR})
+
+target_link_libraries(casyt.lex-driver PUBLIC
+    casyt.lex)
