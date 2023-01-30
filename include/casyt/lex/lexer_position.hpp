@@ -12,11 +12,11 @@
 namespace casyt {
 
     struct lexer_position {
-        std::size_t index;
-        std::size_t line;
-        std::size_t column;
+        std::size_t index = 0;
+        std::size_t line = 0;
+        std::size_t column = 0;
 
-        lexer_position();
+        lexer_position() = default;
         lexer_position(std::size_t &&, std::size_t &&, std::size_t &&);
         ~lexer_position() = default;
     };

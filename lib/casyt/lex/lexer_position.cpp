@@ -7,8 +7,6 @@
 
 #include <casyt/lex/lexer_position.hpp>
 
-casyt::lexer_position::lexer_position() : index(0), line(0), column(0) {}
-
 casyt::lexer_position::lexer_position(std::size_t &&index, std::size_t &&line, std::size_t &&column) : index(index), line(line), column(column) {}
 
 casyt::lexer_position &casyt::operator<<(casyt::lexer_position &p, char c) {
