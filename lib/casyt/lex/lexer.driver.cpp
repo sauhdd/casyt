@@ -11,13 +11,14 @@
 #include <iostream>
 
 int main(int argc, char const **argv) {
-    // make a logger object
-
     if (argc < 2) {
-        // use the logger object
+        std::cerr << "\033[1;31merror:\033[0;0m expected a file input" << std::endl;
 
         return 1;
     }
+
+    casyt::lexer lexer("");
+    casyt::lexer_token token;
 
     return 0;
 }

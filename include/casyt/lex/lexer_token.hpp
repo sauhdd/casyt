@@ -18,7 +18,8 @@ namespace casyt {
         std::string value;
         lexer_position position;
 
-        lexer_token(std::string const &, std::string const &, lexer_position const &);
         lexer_token() = default;
+        lexer_token(std::string const &, std::string const &, lexer_position const &);
+        ~lexer_token() = default;
     };
 }
