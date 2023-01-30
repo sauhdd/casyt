@@ -4,7 +4,8 @@
 #  Licensed under the MPL-2.0 license.
 
 add_executable(casyt.lex-test
-    lexer_position.test.cpp)
+    lexer_position.test.cpp
+    lexer.test.cpp)
 
 target_link_libraries(casyt.lex-test PUBLIC
     casyt.lex

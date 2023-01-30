@@ -8,6 +8,7 @@
 cpp::test("casyt.lex") {
     sources = [
         "casyt/lex/lexer_position.test.cpp",
+        "casyt/lex/lexer.test.cpp",
     ]
 
     dependencies = ["//lib:casyt.lex"]
