@@ -245,6 +245,28 @@ bool casyt::lexer::operator>>(casyt::lexer_token &t) {
                 return true;
             }
 
+            case '/': {
+                try {
+                    operator++();
+                } catch (casyt::lexer_error const &) {
+                    return false;
+                }
+
+                if (_character != '/') {
+                    throw casyt::lexer_error(position, "unsupported slash");
+                }
+
+                while (_character != '\n') {
+                    try {
+                        operator++();
+                    } catch (casyt::lexer_error const &) {
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+
             default: {
                 throw casyt::lexer_error(position, "unsupported character");
             }
