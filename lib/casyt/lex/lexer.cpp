@@ -24,6 +24,7 @@ casyt::lexer &casyt::lexer::operator++() {
     }
 
     _position << _character;
+    _character = _source.at(_position.index);
 
     return *this;
 }
@@ -210,6 +211,20 @@ bool casyt::lexer::operator>>(casyt::lexer_token &t) {
             case '=': {
                 t.type = "equality_sign";
                 t.value = "=";
+                t.position = position;
+
+                try {
+                    operator++();
+                } catch (casyt::lexer_error const &) {
+                    return false;
+                }
+
+                return true;
+            }
+
+            case '.': {
+                t.type = "dot";
+                t.value = ".";
                 t.position = position;
 
                 try {
