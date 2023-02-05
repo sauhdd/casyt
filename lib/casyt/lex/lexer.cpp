@@ -10,7 +10,7 @@
 
 #include <sstream>
 
-casyt::lexer::lexer(std::string const &source) : _source(source), _position(0, 0, 0) {
+casyt::lexer::lexer(std::string const &source) : _source(source + "\n"), _position(0, 0, 0) {
     if (_position.index >= source.length()) {
         throw casyt::lexer_error(_position, "source is empty");
     }
@@ -247,8 +247,8 @@ bool casyt::lexer::operator>>(casyt::lexer_token &t) {
                     throw casyt::lexer_error(position, "unsupported semicolon");
                 }
 
-                t.type = "semicolon";
-                t.value = ":";
+                t.type = "double_semicolon";
+                t.value = "::";
                 t.position = position;
 
                 try {

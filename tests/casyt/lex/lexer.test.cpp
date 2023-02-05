@@ -14,7 +14,7 @@
 #include <vector>
 
 TEST(lexer, all) {
-    casyt::lexer lexer("a::b(\"c\", ::d) { e = [1, 2, 3] }");
+    casyt::lexer lexer("a::b(\"c\", ::d) { e.f = [1, 2, 3] }");
     casyt::lexer_token token("type", "value", casyt::lexer_position());
 
     std::vector<casyt::lexer_token> tokens;
@@ -34,13 +34,15 @@ TEST(lexer, all) {
     EXPECT_EQ(tokens.at(8).value, ")");
     EXPECT_EQ(tokens.at(9).value, "{");
     EXPECT_EQ(tokens.at(10).value, "e");
-    EXPECT_EQ(tokens.at(11).value, "=");
-    EXPECT_EQ(tokens.at(12).value, "[");
-    EXPECT_EQ(tokens.at(13).value, "1");
-    EXPECT_EQ(tokens.at(14).value, ",");
-    EXPECT_EQ(tokens.at(15).value, "2");
+    EXPECT_EQ(tokens.at(11).value, ".");
+    EXPECT_EQ(tokens.at(12).value, "f");
+    EXPECT_EQ(tokens.at(13).value, "=");
+    EXPECT_EQ(tokens.at(14).value, "[");
+    EXPECT_EQ(tokens.at(15).value, "1");
     EXPECT_EQ(tokens.at(16).value, ",");
-    EXPECT_EQ(tokens.at(17).value, "3");
-    EXPECT_EQ(tokens.at(18).value, "]");
-    EXPECT_EQ(tokens.at(19).value, "}");
+    EXPECT_EQ(tokens.at(17).value, "2");
+    EXPECT_EQ(tokens.at(18).value, ",");
+    EXPECT_EQ(tokens.at(19).value, "3");
+    EXPECT_EQ(tokens.at(20).value, "]");
+    EXPECT_EQ(tokens.at(21).value, "}");
 }
