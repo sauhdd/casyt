@@ -7,11 +7,24 @@
 
 #pragma once
 
+#include <casyt/lex/lexer.hpp>
+#include <casyt/lex/lexer_token.hpp>
+
+#include <vector>
+
 namespace casyt {
+
+    using std::vector;
 
     class parser {
       protected:
+        lexer _lexer;
+        vector<lexer_token> _tokens;
+
       public:
-        ~parser();
+        parser(lexer &l) : _lexer(l) {}
+        ~parser() = default;
+
+        void parse();
     };
 }

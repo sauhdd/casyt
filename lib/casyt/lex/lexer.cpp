@@ -5,14 +5,14 @@
   Licensed under the MPL-3.0 license.
  */
 
+#include <casyt/lex/lex_error.hpp>
 #include <casyt/lex/lexer.hpp>
-#include <casyt/lex/lexer_error.hpp>
 
 #include <sstream>
 
 casyt::lexer::lexer(std::string const &source) : _source(source + "\n"), _position(0, 0, 0) {
     if (_position.index >= source.length()) {
-        throw casyt::lexer_error(_position, "source is empty");
+        throw casyt::lex_error(_position, "source is empty");
     }
 
     _character = source.at(_position.index);
@@ -20,7 +20,7 @@ casyt::lexer::lexer(std::string const &source) : _source(source + "\n"), _positi
 
 casyt::lexer &casyt::lexer::operator++() {
     if (_position.index + 1 >= _source.length()) {
-        throw casyt::lexer_error(_position, "cannot advance");
+        throw casyt::lex_error(_position, "cannot advance");
     }
 
     _position << _character;
@@ -33,7 +33,7 @@ bool casyt::lexer::operator>>(casyt::lexer_token &t) {
     while (std::string(" \n\t\r").find(_character) != std::string::npos) {
         try {
             operator++();
-        } catch (casyt::lexer_error const &) {
+        } catch (casyt::lex_error const &) {
             return false;
         }
     }
@@ -48,7 +48,7 @@ bool casyt::lexer::operator>>(casyt::lexer_token &t) {
 
             try {
                 operator++();
-            } catch (casyt::lexer_error const &) {
+            } catch (casyt::lex_error const &) {
                 return false;
             }
         }
@@ -66,7 +66,7 @@ bool casyt::lexer::operator>>(casyt::lexer_token &t) {
 
             try {
                 operator++();
-            } catch (casyt::lexer_error const &) {
+            } catch (casyt::lex_error const &) {
                 return false;
             }
         }
@@ -83,7 +83,7 @@ bool casyt::lexer::operator>>(casyt::lexer_token &t) {
 
                 try {
                     operator++();
-                } catch (casyt::lexer_error const &) {
+                } catch (casyt::lex_error const &) {
                     return false;
                 }
 
@@ -92,14 +92,14 @@ bool casyt::lexer::operator>>(casyt::lexer_token &t) {
 
                     try {
                         operator++();
-                    } catch (casyt::lexer_error const &) {
+                    } catch (casyt::lex_error const &) {
                         return false;
                     }
                 }
 
                 try {
                     operator++();
-                } catch (casyt::lexer_error const &) {
+                } catch (casyt::lex_error const &) {
                     return false;
                 }
 
@@ -117,7 +117,7 @@ bool casyt::lexer::operator>>(casyt::lexer_token &t) {
 
                 try {
                     operator++();
-                } catch (casyt::lexer_error const &) {
+                } catch (casyt::lex_error const &) {
                     return false;
                 }
 
@@ -131,7 +131,7 @@ bool casyt::lexer::operator>>(casyt::lexer_token &t) {
 
                 try {
                     operator++();
-                } catch (casyt::lexer_error const &) {
+                } catch (casyt::lex_error const &) {
                     return false;
                 }
 
@@ -145,7 +145,7 @@ bool casyt::lexer::operator>>(casyt::lexer_token &t) {
 
                 try {
                     operator++();
-                } catch (casyt::lexer_error const &) {
+                } catch (casyt::lex_error const &) {
                     return false;
                 }
 
@@ -159,7 +159,7 @@ bool casyt::lexer::operator>>(casyt::lexer_token &t) {
 
                 try {
                     operator++();
-                } catch (casyt::lexer_error const &) {
+                } catch (casyt::lex_error const &) {
                     return false;
                 }
 
@@ -173,7 +173,7 @@ bool casyt::lexer::operator>>(casyt::lexer_token &t) {
 
                 try {
                     operator++();
-                } catch (casyt::lexer_error const &) {
+                } catch (casyt::lex_error const &) {
                     return false;
                 }
 
@@ -187,7 +187,7 @@ bool casyt::lexer::operator>>(casyt::lexer_token &t) {
 
                 try {
                     operator++();
-                } catch (casyt::lexer_error const &) {
+                } catch (casyt::lex_error const &) {
                     return false;
                 }
 
@@ -201,7 +201,7 @@ bool casyt::lexer::operator>>(casyt::lexer_token &t) {
 
                 try {
                     operator++();
-                } catch (casyt::lexer_error const &) {
+                } catch (casyt::lex_error const &) {
                     return false;
                 }
 
@@ -215,7 +215,7 @@ bool casyt::lexer::operator>>(casyt::lexer_token &t) {
 
                 try {
                     operator++();
-                } catch (casyt::lexer_error const &) {
+                } catch (casyt::lex_error const &) {
                     return false;
                 }
 
@@ -229,7 +229,7 @@ bool casyt::lexer::operator>>(casyt::lexer_token &t) {
 
                 try {
                     operator++();
-                } catch (casyt::lexer_error const &) {
+                } catch (casyt::lex_error const &) {
                     return false;
                 }
 
@@ -239,12 +239,12 @@ bool casyt::lexer::operator>>(casyt::lexer_token &t) {
             case ':': {
                 try {
                     operator++();
-                } catch (casyt::lexer_error const &) {
+                } catch (casyt::lex_error const &) {
                     return false;
                 }
 
                 if (_character != ':') {
-                    throw casyt::lexer_error(position, "unsupported semicolon");
+                    throw casyt::lex_error(position, "unsupported semicolon");
                 }
 
                 t.type = "double_semicolon";
@@ -253,7 +253,7 @@ bool casyt::lexer::operator>>(casyt::lexer_token &t) {
 
                 try {
                     operator++();
-                } catch (casyt::lexer_error const &) {
+                } catch (casyt::lex_error const &) {
                     return false;
                 }
 
@@ -263,18 +263,18 @@ bool casyt::lexer::operator>>(casyt::lexer_token &t) {
             case '/': {
                 try {
                     operator++();
-                } catch (casyt::lexer_error const &) {
+                } catch (casyt::lex_error const &) {
                     return false;
                 }
 
                 if (_character != '/') {
-                    throw casyt::lexer_error(position, "unsupported slash");
+                    throw casyt::lex_error(position, "unsupported slash");
                 }
 
                 while (_character != '\n') {
                     try {
                         operator++();
-                    } catch (casyt::lexer_error const &) {
+                    } catch (casyt::lex_error const &) {
                         return false;
                     }
                 }
@@ -283,7 +283,7 @@ bool casyt::lexer::operator>>(casyt::lexer_token &t) {
             }
 
             default: {
-                throw casyt::lexer_error(position, "unsupported character");
+                throw casyt::lex_error(position, "unsupported character");
             }
         }
     }

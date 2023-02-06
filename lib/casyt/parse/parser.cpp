@@ -5,6 +5,14 @@
   Licensed under the MPL-3.0 license.
  */
 
+#include <casyt/parse/parse_error.hpp>
 #include <casyt/parse/parser.hpp>
 
-casyt::parser::~parser() = default;
+using casyt::lexer_token;
+
+void casyt::parser::parse() {
+    lexer_token t;
+
+    _lexer >> t;
+    _tokens.emplace_back(t);
+}
