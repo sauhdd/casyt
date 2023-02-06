@@ -11,6 +11,7 @@ cpp::library("casyt.lex", ::static) {
     sources = [
         "casyt/lex/lexer_position.cpp",
         "casyt/lex/lexer_token.cpp",
+        "casyt/lex/lexer.cpp",
     ]
 }
 
@@ -23,3 +24,19 @@ cpp::executable("casyt.lex-driver") {
         ":casyt.lex",
     ]
 }
+
+cpp::library("casyt.parse", ::static) {
+    sources = [
+        "casyt/lex/parser.cpp",
+    ]
+}
+
+// cpp::executable("casyt.lex-driver") {
+//     sources = [
+//         "casyt/lex/lexer.driver.cpp",
+//     ]
+// 
+//     dependencies = [
+//         ":casyt.parse",
+//     ]
+// }

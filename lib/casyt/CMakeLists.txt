@@ -4,6 +4,7 @@
 #  Licensed under the MPL-2.0 license.
 
 add_subdirectory(lex)
+add_subdirectory(parse)
 
 add_library(casyt.driver STATIC
     driver.cpp)
