@@ -7,8 +7,10 @@
 
 #pragma once
 
+#include <casyt/context.hpp>
 #include <casyt/lex/lexer.hpp>
 #include <casyt/lex/lexer_token.hpp>
+#include <casyt/target_info.hpp>
 
 #include <vector>
 
@@ -25,6 +27,6 @@ namespace casyt {
         parser(lexer &l) : _lexer(l) {}
         ~parser() = default;
 
-        void parse();
+        context parse(target_info const &);
     };
 }
