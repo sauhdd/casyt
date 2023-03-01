@@ -27,7 +27,7 @@ namespace casyt {
 
         inline string owner_name() const { return _owner_name; }
         inline string package_name() const { return _package_name; }
-        inline string version() const { return _version.value_or("?"); }
+        inline string version() const { return _version.value_or("latest"); }
 
         inline string to_string() const {
             stringstream ss;
